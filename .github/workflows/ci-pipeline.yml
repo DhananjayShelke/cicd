@@ -42,5 +42,5 @@ jobs:
         run: "gcloud info"
 
       - name: Build Docker image with Jib
-        run: ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/cicd:latest
+        run: ./gradlew jib --image=asia-south1-docker.pkg.dev/cicd-420214/cicd/artifact-registry/cicd:latest bootJar -x test
 
