@@ -27,7 +27,7 @@ tasks.named('test') {
 
 jib {
 	from {
-		image = 'adoptopenjdk/openjdk17:latest'
+		image = 'gcr.io/distroless/java:17'
 	}
 	to {
 		image = "gcr.io/cicd/github-actions:1.0"
