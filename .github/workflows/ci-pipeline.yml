@@ -30,3 +30,13 @@ jobs:
       - name: build with gradle wrapper
         run: ./gradlew clean build
 
+      - name: Build and push Docker image
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: 'v357.0.0'
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Build Docker image with Jib
+        run: ./gradlew jib --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/cicd:latest
+
