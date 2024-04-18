@@ -46,3 +46,5 @@ jobs:
 
       - name: deployment
         uses: ./.github/workflows/cd-pipeline
+        secrets:
+          GCP_SA_KEY: "${{ secrets.GCP_SA_KEY }}"
