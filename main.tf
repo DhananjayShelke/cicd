@@ -6,9 +6,8 @@ terraform {
       version = "4.51.0"
     }
   }
-  backend "gcs" {
-    bucket = "cicd-420214-tfstate"
-    prefix = "terraform/state"
+  backend "local" {
+
   }
 }
 
