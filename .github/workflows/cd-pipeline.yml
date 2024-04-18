@@ -1,0 +1,29 @@
+  on:
+    workflow_call:
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      permissions: read-all
+
+      steps:
+        - name: Set up terraform
+          uses: hashicorp/setup-terraform@v1
+        - name: Init Terraform
+          run:
+           cd terraform
+           | terraform init
+          with:
+            credentials_json: "${{ secrets.GCP_SA_KEY }}"
+        - name: Plan terraform
+          run:
+            cd terraform
+            | terraform plan
+          with:
+            credentials_json: "${{ secrets.GCP_SA_KEY }}"
+        - name: deploy
+          run:
+            cd terraform |
+            terraform apply -auto-approve
+          with:
+            credentials_json: "${{ secrets.GCP_SA_KEY }}"

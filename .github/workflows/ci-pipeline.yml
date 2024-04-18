@@ -44,3 +44,5 @@ jobs:
       - name: Build Docker image with Jib
         run: ./gradlew jib --image=asia-south1-docker.pkg.dev/cicd-420214/cicd/artifact-registry/cicd:latest bootJar -x test
 
+      - name: deployment
+        uses: ./.github/workflows/cd-pipeline.yml@main
