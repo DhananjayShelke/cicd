@@ -13,7 +13,7 @@ terraform {
 
 provider "google" {
   project = "cicd-420214"
-  region = "asia-south1"
+  region  = "asia-south1"
 }
 
 resource "google_cloud_run_service" "first_service" {
