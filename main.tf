@@ -6,12 +6,15 @@ terraform {
       version = "4.51.0"
     }
   }
-  backend "local" {
+  backend "gcs" {
+    bucket = "cicd-420214-tfstate"
+    prefix = "terraform/state"
   }
 }
 
 provider "google" {
   project = "cicd-420214"
+  region = "asia-south1"
 }
 
 resource "google_cloud_run_service" "first_service" {
